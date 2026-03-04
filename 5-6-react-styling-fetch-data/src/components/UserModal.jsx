@@ -5,12 +5,23 @@ function UserModal({ show, user, onHide }) {
   if (!user) return null;
 
   return (
-    <>
-      {/* TODO 3.2: Replace this placeholder with a React-Bootstrap <Modal> */}
-      {/* TODO 3.2: Modal must use show={show} and onHide={onHide} */}
-      {/* TODO 3.2: Must include Header/Title/Body/Footer + Close button */}
-      {/* TODO 3.2: Body must show avatar (user-avatar-large) + name/email/phone/website */}
-    </>
+    <Modal show={show} onHide={onHide} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>User Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <img src={user.avatar} alt={user.name} className="user-avatar-large" />
+        <h5>{user.name}</h5>
+        <p>Email: {user.email}</p>
+        <p>Phone: {user.phone}</p>
+        <p>Website: {user.website}</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 
